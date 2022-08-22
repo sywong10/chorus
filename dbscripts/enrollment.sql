@@ -1,0 +1,16 @@
+INSERT INTO enrollment(choir_id, singer_id) values(3,1); 
+INSERT INTO enrollment(choir_id, singer_id) values(1,2); 
+INSERT INTO enrollment(choir_id, singer_id) values(3,3); 
+INSERT INTO enrollment(choir_id, singer_id) values(3,4); 
+INSERT INTO enrollment(choir_id, singer_id) values(1,5); 
+INSERT INTO enrollment(choir_id, singer_id) values(1,6); 
+INSERT INTO enrollment(choir_id, singer_id) values(3,7); 
+INSERT INTO enrollment(choir_id, singer_id) values(3,8); 
+INSERT INTO enrollment(choir_id, singer_id) values(1,9); 
+INSERT INTO enrollment(choir_id, singer_id) values(3,10); 
+INSERT INTO enrollment(choir_id, singer_id) values(1,11); 
+INSERT INTO enrollment(choir_id, singer_id) values(1,12); 
+INSERT INTO enrollment(choir_id, singer_id) values(1,13); 
+INSERT INTO enrollment(choir_id, singer_id) values(3,14); 
+INSERT INTO enrollment(choir_id, singer_id) values(1,15); 
+INSERT INTO enrollment(choir_id, singer_id) values(1,16); 
