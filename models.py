@@ -2,13 +2,14 @@ import os
 from sqlalchemy import Column, String, Integer, create_engine
 from flask_sqlalchemy import SQLAlchemy
 import json
-from settings import DB_NAME, DB_USER, DB_PASSWORD, TEST_DB_NAME, TEST_DB_USER, TEST_DB_PASSWORD, SINGER_TOKEN, DIRECTOR_TOKEN
+from settings import DB_NAME, DB_USER, DB_PASSWORD, TEST_DB_NAME, TEST_DB_USER, TEST_DB_PASSWORD, SINGER_TOKEN, DIRECTOR_TOKEN, DATABASE_URL
 
 
 
 
 
-database_path = 'postgresql://{}:{}@{}/{}'.format(DB_USER, DB_PASSWORD, 'localhost:5432', DB_NAME)
+# database_path = 'postgresql://{}:{}@{}/{}'.format(DB_USER, DB_PASSWORD, 'localhost:5432', DB_NAME)
+database_path = DATABASE_URL
 db = SQLAlchemy()
 
 
