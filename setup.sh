@@ -1,5 +1,5 @@
 
-export DATABASE_URL="postgresql://postgres:postgres@localhost:5432/postgres
+export DATABASE_URL="postgresql://postgres:postgres@localhost:5432/postgres"
 
 export DB_NAME="capstone"
 export DB_USER="postgres"
