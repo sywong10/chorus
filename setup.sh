@@ -1,3 +1,6 @@
+
+export DATABASE_URL="postgresql://postgres:postgres@localhost:5432/postgres
+
 export DB_NAME=capstone
 export DB_USER=postgres
 export DB_PASSWORD=postgres
