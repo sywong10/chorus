@@ -9,6 +9,7 @@ DB_PASSWORD = os.environ.get('DB_PASSWORD')
 # DATABASE_URL = os.environ.get('DATABASE_URL')
 DATABASE_URL= os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
 
+
 TEST_DB_NAME = os.environ.get('TEST_DB_NAME')
 TEST_DB_USER = os.environ.get('TEST_DB_USER')
 TEST_DB_PASSWORD = os.environ.get('TEST_DB_PASSWORD')
