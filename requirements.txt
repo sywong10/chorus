@@ -20,3 +20,4 @@ python-jose
 Flask-Cors==3.0.7
 Flask-Script
 Flask-Migrate==2.7.0
+gunicorn==20.1.0
