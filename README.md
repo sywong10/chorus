@@ -157,7 +157,7 @@ python-dotenv<br><br><br>
 
     
 
-**if intend to recreate database**<br>
+**if intend to recreate database**<br><br>
 if databases need to be re-created...
 
 1. comment out both foreign keys in class ChoirEnrollment, restart flask <br>
