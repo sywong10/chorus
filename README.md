@@ -89,7 +89,7 @@ https://github.com/sywong10/chorus
 
 <br><br>
 
-**Project dependencies**
+**Project dependencies**<br?
 alembic==1.7.5<br>
 click==7.1.2<br>
 colorama==0.4.4<br>
