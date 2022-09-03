@@ -21,9 +21,23 @@ enrollment table contains enrollment_id, choir_id and singer_id
 **App on Heroku**
 
 https://sally-chorus.herokuapp.com/
+<br><br><br>
+
+
+**import a base collection to Postman if interested**
+<br>
+1. install postman
+2. click on Collections
+3. click on "Import"
+4. click on "Upload Files", select choir.postman_collection.json
+5. this will provide a group of basic REST activities for each role
+6. {{host}} should be set to the application server if intend to run REST to the application.  If REST activities are intended to run on local flask, then default setting will suffice the neede and no additional change is needed. 
+7. Bear token for director and singer can be found below.  Value of tokens should be set in postman.
+   1. click on "director" folder in Collections, type should set to "Bearer Token", set the appropriate token value.
+   2. click on "singer" folder in Collections, type should set to "Bearer Token", set the appropriate token value.
+
+
 <br><br>
-
-
 **Endpoints**
 
 **GET** <br />
