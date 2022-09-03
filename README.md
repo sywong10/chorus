@@ -139,7 +139,7 @@ python-dotenv<br><br><br>
 6. $ export FLASK_ENV=development <br>
 7. $ flask run --reload (this will create empty tables in database)<br><br>
 
-**if intend to populate database with sample data**<br> 
+**if intend to populate database with sample data**<br><br> 
 8. $ cd dbscripts <br>
      $ psql -U postgres capstone < choir.sql <br>
      $ psql -U postgres capstone_test < choir.sql <br>
