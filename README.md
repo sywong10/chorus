@@ -10,6 +10,11 @@ Singers can register themselves to a local registry with information of their vo
 * Choral directories can use this information to assemble their choral groups per available voice parts and availability.
 
 <br><br>
+
+**Motivation**
+I like to use this course to practice python.
+
+
 **Models**
 
 singer table contains column name, phone, voice_part, not_available<br>
@@ -18,10 +23,16 @@ enrollment table contains enrollment_id, choir_id and singer_id
 
 <br><br>
 
-**App on Heroku**
+**hosted application on Heroku**
 
 https://sally-chorus.herokuapp.com/
 <br><br><br>
+
+
+**repo in github**
+
+https://github.com/sywong10/chorus
+
 
 
 **import a base collection to Postman if interested**
@@ -77,6 +88,41 @@ https://sally-chorus.herokuapp.com/
 
 
 <br><br>
+
+**Project dependencies**
+alembic==1.7.5<br>
+click==7.1.2<br>
+colorama==0.4.4<br>
+ecdsa==0.17.0<br>
+Flask==1.1.2<br>
+Flask-Cors==3.0.10<br>
+Flask-Migrate==1.8.0<br>
+Flask-Script==2.0.6<br>
+Flask-SQLAlchemy==2.5.1<br>
+greenlet==1.1.2<br>
+gunicorn==20.1.0<br>
+importlib-metadata==4.8.2<br>
+importlib-resources==5.4.0<br>
+itsdangerous==1.1.0<br>
+Jinja2==2.11.3<br>
+Mako==1.1.6<br>
+MarkupSafe==2.0.1<br>
+psycopg2-binary==2.9.2<br>
+pyasn1==0.4.8<br>
+pycodestyle==2.8.0<br>
+python-jose==3.3.0<br>
+rsa==4.8<br>
+six==1.16.0<br>
+SQLAlchemy==1.3.24<br>
+typing-extensions==4.0.1<br>
+Werkzeug==1.0.1<br>
+zipp==3.6.0<br>
+python-dotenv<br><br><br>
+
+
+
+**Setup local development environment**
+
 **create empty databases**
 1. su - postgres 
 2. $ createdb capstone <br>
