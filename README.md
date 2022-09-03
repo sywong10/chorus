@@ -208,20 +208,20 @@ capstone=# <br>
 http://localhost:5000 <br><br>
 
 
-set token variables (tokens below are valid for 24 hours)<br><br>
+**set token variables (tokens below are valid for 24 hours)**<br><br>
 $ singer_token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ5NVJqMVUwdUd0NFJvcjI1VGtpRiJ9.eyJpc3MiOiJodHRwczovL3N5d29uZzEwY2hvcnVzLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2MmRjNmQ3ZTM1Yzk5ZGM4YjhjNjczMDIiLCJhdWQiOiJjaG9ydXMiLCJpYXQiOjE2NjIyMTQwOTIsImV4cCI6MTY2MjMwMDQ5MiwiYXpwIjoidGFVZXFWNXk3RWdoN2c2S2Y5UDU3ajJ6VERwTHVjbVUiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpzaW5nZXJzIiwiZ2V0OmNob2lycyIsImdldDplbnJvbGxtZW50cyIsImdldDpzaW5nZXJzIiwicGF0Y2g6c2luZ2VycyIsInBvc3Q6c2luZ2VycyJdfQ.N5TRjX7hhYIp18sLpynlRVVKnoxadMkN0Z2ebkSPaeDSy2P1iBtmC7sBgV8Mopwtj7UKlRt78HVfqEYas3-CrHi-C5bCRiEGfKhC6RlIhjlhLlX-eZ4CtcdVnnhtuGfUs73fKf2aIn_6RHJqbv1_8flc0krs7e_6HcjjIbNt8-DWj6FxSyoeWJSZNxMEml81NdKzKz5AGfmCgFj4JR6zk__h1TcHwmCm8ruAM92mU3AHhuKGfejcztMTNofC2Tw-SrSnIzt0-sJ5yxsxKLWjxRMlO4g-hpCQd--OzGcuar-we8wInq4fDMPNHxI-r2GnNqToOt25P4FssPfsvzS80g'<br><br>
 $ director_token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ5NVJqMVUwdUd0NFJvcjI1VGtpRiJ9.eyJpc3MiOiJodHRwczovL3N5d29uZzEwY2hvcnVzLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2MmRjNmNiN2U1MThlYmI2Nzc1ZWIyMWYiLCJhdWQiOiJjaG9ydXMiLCJpYXQiOjE2NjIyMTM4MTEsImV4cCI6MTY2MjMwMDIxMSwiYXpwIjoidGFVZXFWNXk3RWdoN2c2S2Y5UDU3ajJ6VERwTHVjbVUiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpjaG9pcnMiLCJkZWxldGU6c2luZ2VycyIsImdldDpjaG9pcnMiLCJnZXQ6ZW5yb2xsbWVudHMiLCJnZXQ6cGFydCIsImdldDpwYXJ0X2luX2Nob2lyIiwiZ2V0OnNpbmdlcnMiLCJwYXRjaDpjaG9pcnMiLCJwYXRjaDpzaW5nZXJzIiwicG9zdDpjaG9pcnMiLCJwb3N0OmVucm9sbF9zaW5nZXIiLCJwb3N0OnNpbmdlcnMiXX0.TqWbfrnazsaXQEvLn8-n9kYZhMXWHqvLSxo4BMKY0UkhkVDXD5xIvYPKvvGgUvLihzhYpQb8Gpc0GzX3nOzurqibrTQy92eq5tQAzkV3rwrqkMEZiqR9gXj19GieixmflyyDYNwBK6vDTaB0Bmr_gqHYCg4OjvhVQzufFv4WhxRRs0WgajTwWKUDFK9UL6Bxoow-6WAoMBzIOyf4X2AiRAb21mw-WRamImP4SRyGvU_IJ--S95iao6euwHaoMAuCSZjcAkdtmgju30gYDJ7BCzW2WX6qKbIIu-p2ULeYCLiwGfDXsY4cERAtuJyM2efaZ2d7UNAj9xKjj8HcpjZgQg'<br><br>
 
-list singer information for signers in first page <br><br>
+**list singer information for signers in first page** <br><br>
 $ curl http://localhost:5000/singers -H "Accept: application/json" -H "Authorization: Bearer $singer_token" <br>
 
-list singer information for singers in paginated page 2 <br><br>
+**list singer information for singers in paginated page 2** <br><br>
 $ curl -X GET http://localhost:5000/singers\?page\=2 -H "Accept: application/json" -H "Authorization: Bearer $singer_token <br>
 
-list singer information by singer_id = 2 <br><br>
+**list singer information by singer_id = 2** <br><br>
 $ curl -X GET http://localhost:5000/singers/2 -H "Accept: application/json" -H "Authorization: Bearer $singer_token" <br>
 
-list singer name in specified voice part (alto) <br><br>
+**list singer name in specified voice part (alto)** <br><br>
 $ curl -X GET http://localhost:5000/singers/alto -H "Accept: application/json" -H "Authorization: Bearer $singer_token" <br><br>
 
 
