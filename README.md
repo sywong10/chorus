@@ -238,7 +238,7 @@ $ curl -X GET http://localhost:5000/singers/alto -H "Accept: application/json" -
 
 **GET /singers**
 * fetch registered singer list 
-* need 'get:singers' permission
+* needs 'get:singers' permission
 * returns: json containing all info in singer table.
 
 GET /singers
