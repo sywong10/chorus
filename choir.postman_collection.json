@@ -1,0 +1,646 @@
+{
+	"info": {
+		"_postman_id": "a672fedb-ae2d-414f-bf6a-3cb07516139f",
+		"name": "choir",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13738497"
+	},
+	"item": [
+		{
+			"name": "director",
+			"item": [
+				{
+					"name": "singers",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/singers",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"singers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "singers/tenors",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/singers/tenors",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"singers",
+								"tenors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "singers/tenor",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/singers/tenor",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"singers",
+								"tenor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "singers",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"voice_part\": \"tenor\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/singers/10/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"singers",
+								"10",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "singers",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Michael Scott\",\n    \"phone\": \"123-123-1234\",\n    \"voice_part\": \"tenor\",\n    \"not_available\": \"Thursday\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/singers",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"singers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "singers2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Michael Scott\",\n    \"phone\": \"123-123-1234\",\n    \"voice_part\": \"tenor\",\n    \"not_available\": \"Thursday\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/singers",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"singers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "enroll_singer_to_choir",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/enroll/hudson/20",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"enroll",
+								"hudson",
+								"20"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "enroll_singer_to_choir2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/enroll/mercer/21",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"enroll",
+								"mercer",
+								"21"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "enroll_singer_to_choir3",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/enroll/hudson/21",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"enroll",
+								"hudson",
+								"21"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add_Dwight",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Dwight Schrute\",\n    \"phone\": \"812-288-5931\",\n    \"voice_part\": \"bass\",\n    \"not_available\": \"Tuesday\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/singers",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"singers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "singers/id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/singers/2/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"singers",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "choirs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/choirs",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"choirs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "singers/14",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/singers/14",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"singers",
+								"14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "choirs",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Somerset Choir2\",\n    \"practice_time\": \"Wednesday 7 pm\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/choirs",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"choirs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "choirs/4",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"practice_time\": \"Friday 7 pm\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/choirs/4",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"choirs",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "choirs/7",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/choirs/7",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"choirs",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "choir/3",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/choir/3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"choir",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "choir/1/soprano",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/choir/1/soprano",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"choir",
+								"1",
+								"soprano"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ5NVJqMVUwdUd0NFJvcjI1VGtpRiJ9.eyJpc3MiOiJodHRwczovL3N5d29uZzEwY2hvcnVzLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2MmRjNmNiN2U1MThlYmI2Nzc1ZWIyMWYiLCJhdWQiOiJjaG9ydXMiLCJpYXQiOjE2NjEwMjQ3NDEsImV4cCI6MTY2MTExMTE0MSwiYXpwIjoidGFVZXFWNXk3RWdoN2c2S2Y5UDU3ajJ6VERwTHVjbVUiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpjaG9pcnMiLCJkZWxldGU6c2luZ2VycyIsImdldDpjaG9pcnMiLCJnZXQ6ZW5yb2xsbWVudHMiLCJnZXQ6cGFydCIsImdldDpwYXJ0X2luX2Nob2lyIiwiZ2V0OnNpbmdlcnMiLCJwYXRjaDpjaG9pcnMiLCJwYXRjaDpzaW5nZXJzIiwicG9zdDpjaG9pcnMiLCJwb3N0OmVucm9sbF9zaW5nZXIiLCJwb3N0OnNpbmdlcnMiXX0.q3yiC5XhBaEZSPNtci5A9c8gg8pgPMCmBJXA14rnoT5CA7uVe_8W6fZVITWT-kYvuaLhWF_8In4NqKxV4WjT9WcaYWh0E6Zpfxl7Nce1IXiEGpMlLgb7xXg77DFw2eoI3PiboY76fSHDmuChFXkuZ3_DyPkwGQ0aAMQM-0bBXp5Kn2Y79Vk0xKjkKhEEyxWUKdMccW4bLLuxLA86L4ya62k_6cQqVL8XWQkWv5nLqlKK11IqUM3iFGB8k3KA1eVe2gBL5EO38_LVSSpi43CyFiiFIie1IlI6f-0e5OvfGiYrCqGejB-tWGR0Mm97h3LDLZ4HnK4CkVt1XJsEbyZw-Q",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "singer",
+			"item": [
+				{
+					"name": "/singers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/singers",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"singers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/singers",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Michael Scott\",\n    \"phone\": \"123-123-1234\",\n    \"voice_part\": \"tenor\",\n    \"not_available\": \"Thursday\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/singers",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"singers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "singers/tenor",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/singers/tenor",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"singers",
+								"tenor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "choir/3",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/choir/3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"choir",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ5NVJqMVUwdUd0NFJvcjI1VGtpRiJ9.eyJpc3MiOiJodHRwczovL3N5d29uZzEwY2hvcnVzLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2MmRjNmQ3ZTM1Yzk5ZGM4YjhjNjczMDIiLCJhdWQiOiJjaG9ydXMiLCJpYXQiOjE2NjEwMjQ3NzksImV4cCI6MTY2MTExMTE3OSwiYXpwIjoidGFVZXFWNXk3RWdoN2c2S2Y5UDU3ajJ6VERwTHVjbVUiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpzaW5nZXJzIiwiZ2V0OmNob2lycyIsImdldDplbnJvbGxtZW50cyIsImdldDpzaW5nZXJzIiwicGF0Y2g6c2luZ2VycyIsInBvc3Q6c2luZ2VycyJdfQ.IUJa7i3r9iCsqvv6XRVwoAvNzayYpxnPeWHkS8y0F4Pgm95acIR2FBDfz3nLMjzdCcm9xhOzqfz-keraVRfd2931Ku93U573dhUpnOdvo3aQi3cqW2h6FJTLZrYuAmq4tPhmq7pX2a6QZYikzsCdYcRbJazjg86ntJNkiZlGbzVDHPI0cxfNewCMlXd3dxUH65gKOz4kNNWCUFnkJwOR5lXQNTLb1sz3sDytL12QHaSiOqEm-jxtprTVkYG7AXoNiOfo6DIFwyGk5VB1aGzqVrnIn9uSe1hb46kh7FJQ1Uql_kPqlrnqeAElUN1Ydwd4F8NsrXVeIrp5SgTXi-0DyA",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "localhost:5000",
+			"type": "string"
+		}
+	]
+}

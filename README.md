@@ -4,18 +4,24 @@
 
 The Capstone - Chorus project is a final project of Full Stack Web Developer Nanodegree of Udacity.
 
-* Chorus project is an application to help singers in nearby counties to let choral directors know their availability.
+* Chorus project is an application to help singers in nearby counties to come together, let choral directors know their interest and availability.
 Singers can register themselves to a local registry with information of their voice part, their availability for rehersal days and phone number for communication.
 
-* Choral directories can use this information to assemble their choral groups per singers' voice parts and rehearsal availability.
+* Choral directories can use this information to assemble their choral groups per available voice parts and availability.
 
-
+<br><br>
 **Models**
 
-singer table with colums name, phone, voice_part, not_available
-choir table with columns name and practice_time
+singer table contains column name, phone, voice_part, not_available<br>
+choir table contains columns name and practice_time<br>
+enrollment table contains enrollment_id, choir_id and singer_id
 
-enrollment table with enrollment_id, choir_id and singer_id
+<br><br>
+
+**App on Heroku**
+
+https://sally-chorus.herokuapp.com/
+<br><br>
 
 
 **Endpoints**
@@ -42,33 +48,39 @@ enrollment table with enrollment_id, choir_id and singer_id
   &nbsp;&nbsp;&nbsp;/singers/<int:id> <br /> 
   &nbsp;&nbsp;&nbsp;/choirs/<int:id> <br />
 
-
+<br><br>
 **Roles** <br />
 
-* singer: can register singer, unregister singer, update singer information, view list of people who have registered, list of people enrolled in each choir.
-* director: can do everything singer can.  Director also can enroll and unenroll a singer to a chorus according to their voice part and availability.
+* **singer**: can register singer, unregister singer, update singer information, view list of people who have registered, list of people who are enrolled in each choir.<br>
+* **director**: can do everything singer can.  Director can add new choir groups; director also can enroll and unenroll singers to a chorus according to choir needs in different voice parts and among singer availability.<br><br>
+
+
+| role | permissions |
+| --- | ---- |
+| singer | delete:singer, get:choirs, get:enrollments, get:singers, patch:singers, post:singers |
+| director | delete:choirs, delete:singers, get:choirs, get:enrollments, get:part, get:part_in_choir, get:singers, patch:choirs, patch:singers, post:choirs, post:enroll_singer, post:singers |
+
+
+
+<br><br>
+**create empty databases**
+1. su - postgres 
+2. $ createdb capstone <br>
+3. $ createdb capstone_test <br>
 
 
 **setup Python environment**
 
-$ cd capstone <br>
-$ pip install -r requirements.txt <br>
-$ source cap/bin/activate <br>
-$ cd starter <br>
-$ export FLASK_APP=app.py <br>
-$ export FLASK_ENV=development <br>
-$ flask run --reload <br>
+1. su switch back to normal user
+2. $ python3 -m venv cap
+3. $ pip install -r requirements.txt <br>
+4. $ source cap/bin/activate <br>
+5. $ export FLASK_APP=app.py <br>
+6. $ export FLASK_ENV=development <br>
+7. $ flask run --reload (this will create empty tables in database)<br><br>
 
-
-**Prep for database**
-
-
-1.  createdb capstone <br>
-    createdb capstone_test <br>
-
-2.  flask run --reload   (this should create empty tables) <br>
-
-3.   $ cd starter/dbscripts <br>
+**if intend to populate database with sample data**<br> 
+8. $ cd dbscripts <br>
      $ psql -U postgres capstone < choir.sql <br>
      $ psql -U postgres capstone_test < choir.sql <br>
         Password for user postgres: <br>
@@ -79,16 +91,17 @@ $ flask run --reload <br>
     $  psql -U postgres capstone < singer.sql <br>
     $  psql -U postgres capstone < enrollment.sql <br>
 
-4.  $ cd starter <br>
-     $ mv migrations migration-orig <br>
+9. $ cd ..<br>
      $ flask db init <br>
      $ flask db migrate -m "initial migration" <br>
 
     
 
-**recreate database**
+**if intend to recreate database**<br>
+if databases need to be re-created...
 
-1.
+1. comment out both foreign keys in class ChoirEnrollment, restart flask <br>
+
 capstone=# delete from enrollment; <br>
 DELETE 17 <br>
 capstone=# select * from enrollment; <br>
@@ -98,53 +111,58 @@ capstone=# select * from enrollment; <br>
 
 capstone=# <br>
 
-2.  capstone=# delete from choir; <br>
+2. capstone=# delete from choir; <br><br>
 
-3.  capstone=# delete from singer; <br>
+3. capstone=# delete from singer; <br><br>
 
-4.  stop flask <br>
+4. stop flask <br><br>
 
-5.  switch user to postgres <br>
-    $ dropdb capstone <br>
+5. su switch user to postgres <br>
+    $ dropdb capstone <br><br>
 
-6.  createdb capstone <br>
-    createdb capstone_test <br>
+6. createdb capstone <br>
+    createdb capstone_test <br><br>
 
-7.  uncomment both forieng keys in class ChoirEnrollment <br>
+7. uncomment both forieng keys in class ChoirEnrollment <br><br>
 
-8.  flask run --reload   (this should create empty tables) <br>
+8. flask run --reload   (this should create empty tables) <br><br>
 
-9.   $ cd starter/dbscripts <br>
-     $ psql -U postgres capstone < choir.sql <br>
-        Password for user postgres: <br>
-        INSERT 0 1 <br>
-        INSERT 0 1 <br>
-        INSERT 0 1 <br>
+9. $ cd dbscripts <br>
+   $ psql -U postgres capstone < choir.sql <br>
+          Password for user postgres: <br>
+          INSERT 0 1 <br>
+          INSERT 0 1 <br>
+          INSERT 0 1 <br>
 
-    $  psql -U postgres capstone < singer.sql <br>
-    $  psql -U postgres capstone < enrollment.sql <br>
+      $  psql -U postgres capstone < singer.sql <br>
+      $  psql -U postgres capstone < enrollment.sql <br><br>
 
-10.  $ cd starter <br>
-     $ mv migrations migration-orig <br>
+10.  $ mv migrations migrations-orig
      $ flask db init <br>
-     $ flask db migrate -m "initial migration" <br>
+     $ flask db migrate -m "initial migration" <br><br>
 
      
 
-**curl example to some endpoints**
+**curl examples for some endpoints, assuming flask is running on local machine**<br>
+**API endpoints** <br><br>
+http://localhost:5000 <br><br>
 
 
-list singer information for signers in first page <br>
+set token variables (tokens below are valid for 24 hours)<br><br>
+$ singer_token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ5NVJqMVUwdUd0NFJvcjI1VGtpRiJ9.eyJpc3MiOiJodHRwczovL3N5d29uZzEwY2hvcnVzLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2MmRjNmQ3ZTM1Yzk5ZGM4YjhjNjczMDIiLCJhdWQiOiJjaG9ydXMiLCJpYXQiOjE2NjIyMTQwOTIsImV4cCI6MTY2MjMwMDQ5MiwiYXpwIjoidGFVZXFWNXk3RWdoN2c2S2Y5UDU3ajJ6VERwTHVjbVUiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpzaW5nZXJzIiwiZ2V0OmNob2lycyIsImdldDplbnJvbGxtZW50cyIsImdldDpzaW5nZXJzIiwicGF0Y2g6c2luZ2VycyIsInBvc3Q6c2luZ2VycyJdfQ.N5TRjX7hhYIp18sLpynlRVVKnoxadMkN0Z2ebkSPaeDSy2P1iBtmC7sBgV8Mopwtj7UKlRt78HVfqEYas3-CrHi-C5bCRiEGfKhC6RlIhjlhLlX-eZ4CtcdVnnhtuGfUs73fKf2aIn_6RHJqbv1_8flc0krs7e_6HcjjIbNt8-DWj6FxSyoeWJSZNxMEml81NdKzKz5AGfmCgFj4JR6zk__h1TcHwmCm8ruAM92mU3AHhuKGfejcztMTNofC2Tw-SrSnIzt0-sJ5yxsxKLWjxRMlO4g-hpCQd--OzGcuar-we8wInq4fDMPNHxI-r2GnNqToOt25P4FssPfsvzS80g'<br><br>
+$ director_token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ5NVJqMVUwdUd0NFJvcjI1VGtpRiJ9.eyJpc3MiOiJodHRwczovL3N5d29uZzEwY2hvcnVzLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2MmRjNmNiN2U1MThlYmI2Nzc1ZWIyMWYiLCJhdWQiOiJjaG9ydXMiLCJpYXQiOjE2NjIyMTM4MTEsImV4cCI6MTY2MjMwMDIxMSwiYXpwIjoidGFVZXFWNXk3RWdoN2c2S2Y5UDU3ajJ6VERwTHVjbVUiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpjaG9pcnMiLCJkZWxldGU6c2luZ2VycyIsImdldDpjaG9pcnMiLCJnZXQ6ZW5yb2xsbWVudHMiLCJnZXQ6cGFydCIsImdldDpwYXJ0X2luX2Nob2lyIiwiZ2V0OnNpbmdlcnMiLCJwYXRjaDpjaG9pcnMiLCJwYXRjaDpzaW5nZXJzIiwicG9zdDpjaG9pcnMiLCJwb3N0OmVucm9sbF9zaW5nZXIiLCJwb3N0OnNpbmdlcnMiXX0.TqWbfrnazsaXQEvLn8-n9kYZhMXWHqvLSxo4BMKY0UkhkVDXD5xIvYPKvvGgUvLihzhYpQb8Gpc0GzX3nOzurqibrTQy92eq5tQAzkV3rwrqkMEZiqR9gXj19GieixmflyyDYNwBK6vDTaB0Bmr_gqHYCg4OjvhVQzufFv4WhxRRs0WgajTwWKUDFK9UL6Bxoow-6WAoMBzIOyf4X2AiRAb21mw-WRamImP4SRyGvU_IJ--S95iao6euwHaoMAuCSZjcAkdtmgju30gYDJ7BCzW2WX6qKbIIu-p2ULeYCLiwGfDXsY4cERAtuJyM2efaZ2d7UNAj9xKjj8HcpjZgQg'<br><br>
+
+list singer information for signers in first page <br><br>
 $ curl http://localhost:5000/singers -H "Accept: application/json" -H "Authorization: Bearer $singer_token" <br>
 
-list singer information for singers in paginated page 2 <br>
+list singer information for singers in paginated page 2 <br><br>
 $ curl -X GET http://localhost:5000/singers\?page\=2 -H "Accept: application/json" -H "Authorization: Bearer $singer_token <br>
 
-list singer information by singer_id = 2 <br>
+list singer information by singer_id = 2 <br><br>
 $ curl -X GET http://localhost:5000/singers/2 -H "Accept: application/json" -H "Authorization: Bearer $singer_token" <br>
 
-list singer name in specified voice part (alto) <br>
-$ curl -X GET http://localhost:5000/singers/alto -H "Accept: application/json" -H "Authorization: Bearer $singer_token" <br>
+list singer name in specified voice part (alto) <br><br>
+$ curl -X GET http://localhost:5000/singers/alto -H "Accept: application/json" -H "Authorization: Bearer $singer_token" <br><br>
 
 
 **Error Code**
@@ -156,11 +174,6 @@ $ curl -X GET http://localhost:5000/singers/alto -H "Accept: application/json" -
 422 - unprocessable_entity <br>
 
 ==================
-
-**API endpoints** <br>
-http://localhost:5000 <br>
-
-
 
 
 **GET /singers**
@@ -456,16 +469,16 @@ Client ID:      taUeqV5y7Egh7g6Kf9P57j2zTDpLucmU
 Allowed Callback URLs:  https://localhost:8080/login-result
 
 
-directory
+director
 sywong109@gmail.com
 
 
 https://sywong10chorus.us.auth0.com/authorize?audience=chorus&response_type=token&client_id=taUeqV5y7Egh7g6Kf9P57j2zTDpLucmU&redirect_uri=https://localhost:8080/login-result
-https://localhost:8080/login-result#access_token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ5NVJqMVUwdUd0NFJvcjI1VGtpRiJ9.eyJpc3MiOiJodHRwczovL3N5d29uZzEwY2hvcnVzLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2MmRjNmNiN2U1MThlYmI2Nzc1ZWIyMWYiLCJhdWQiOiJjaG9ydXMiLCJpYXQiOjE2NjE3MTQxNzEsImV4cCI6MTY2MTgwMDU3MSwiYXpwIjoidGFVZXFWNXk3RWdoN2c2S2Y5UDU3ajJ6VERwTHVjbVUiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpjaG9pcnMiLCJkZWxldGU6c2luZ2VycyIsImdldDpjaG9pcnMiLCJnZXQ6ZW5yb2xsbWVudHMiLCJnZXQ6cGFydCIsImdldDpwYXJ0X2luX2Nob2lyIiwiZ2V0OnNpbmdlcnMiLCJwYXRjaDpjaG9pcnMiLCJwYXRjaDpzaW5nZXJzIiwicG9zdDpjaG9pcnMiLCJwb3N0OmVucm9sbF9zaW5nZXIiLCJwb3N0OnNpbmdlcnMiXX0.meqUIIFV3GQidppqjcIHrTauVS89AUsPrbG661nQTBWWXVveBOnWA_WyGqetlotOylAGhHWEsIj9PMGVJZqDzD_cbcyMNAOBizRJB_5_wJYpunlXI2JlMTi1rr1yT3BVXT_dIEsMd3Po_utcK6eJLgZR2sKpEjU5IpxZD8D8noYbYJ17oMA5o5CrDCTsvUFGzka9Yuj7E167oq3C52vWy01a1K9o9TKiy1G0Q56lsvD4QnCkWs6g1FKQoWVucMVeqiF_EMzj00TMqPT2iXo4hu5nJeHNwKhE8fScQg3A64mSdRu5X7WgdB8DEBn_oFKHrmB5q83h1Pw5fcd96_M7Wg&expires_in=86400&token_type=Bearer
+https://localhost:8080/login-result#access_token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ5NVJqMVUwdUd0NFJvcjI1VGtpRiJ9.eyJpc3MiOiJodHRwczovL3N5d29uZzEwY2hvcnVzLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2MmRjNmNiN2U1MThlYmI2Nzc1ZWIyMWYiLCJhdWQiOiJjaG9ydXMiLCJpYXQiOjE2NjIyMTM4MTEsImV4cCI6MTY2MjMwMDIxMSwiYXpwIjoidGFVZXFWNXk3RWdoN2c2S2Y5UDU3ajJ6VERwTHVjbVUiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpjaG9pcnMiLCJkZWxldGU6c2luZ2VycyIsImdldDpjaG9pcnMiLCJnZXQ6ZW5yb2xsbWVudHMiLCJnZXQ6cGFydCIsImdldDpwYXJ0X2luX2Nob2lyIiwiZ2V0OnNpbmdlcnMiLCJwYXRjaDpjaG9pcnMiLCJwYXRjaDpzaW5nZXJzIiwicG9zdDpjaG9pcnMiLCJwb3N0OmVucm9sbF9zaW5nZXIiLCJwb3N0OnNpbmdlcnMiXX0.TqWbfrnazsaXQEvLn8-n9kYZhMXWHqvLSxo4BMKY0UkhkVDXD5xIvYPKvvGgUvLihzhYpQb8Gpc0GzX3nOzurqibrTQy92eq5tQAzkV3rwrqkMEZiqR9gXj19GieixmflyyDYNwBK6vDTaB0Bmr_gqHYCg4OjvhVQzufFv4WhxRRs0WgajTwWKUDFK9UL6Bxoow-6WAoMBzIOyf4X2AiRAb21mw-WRamImP4SRyGvU_IJ--S95iao6euwHaoMAuCSZjcAkdtmgju30gYDJ7BCzW2WX6qKbIIu-p2ULeYCLiwGfDXsY4cERAtuJyM2efaZ2d7UNAj9xKjj8HcpjZgQg&expires_in=86400&token_type=Bearer
 
 
 singer
 sywong10@yahoo.comeyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ5NVJqMVUwdUd0NFJvcjI1VGtpRiJ9.eyJpc3MiOiJodHRwczovL3N5d29uZzEwY2hvcnVzLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2MmRjNmNiN2U1MThlYmI2Nzc1ZWIyMWYiLCJhdWQiOiJjaG9ydXMiLCJpYXQiOjE2NjE3MTQxNzEsImV4cCI6MTY2MTgwMDU3MSwiYXpwIjoidGFVZXFWNXk3RWdoN2c2S2Y5UDU3ajJ6VERwTHVjbVUiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpjaG9pcnMiLCJkZWxldGU6c2luZ2VycyIsImdldDpjaG9pcnMiLCJnZXQ6ZW5yb2xsbWVudHMiLCJnZXQ6cGFydCIsImdldDpwYXJ0X2luX2Nob2lyIiwiZ2V0OnNpbmdlcnMiLCJwYXRjaDpjaG9pcnMiLCJwYXRjaDpzaW5nZXJzIiwicG9zdDpjaG9pcnMiLCJwb3N0OmVucm9sbF9zaW5nZXIiLCJwb3N0OnNpbmdlcnMiXX0.meqUIIFV3GQidppqjcIHrTauVS89AUsPrbG661nQTBWWXVveBOnWA_WyGqetlotOylAGhHWEsIj9PMGVJZqDzD_cbcyMNAOBizRJB_5_wJYpunlXI2JlMTi1rr1yT3BVXT_dIEsMd3Po_utcK6eJLgZR2sKpEjU5IpxZD8D8noYbYJ17oMA5o5CrDCTsvUFGzka9Yuj7E167oq3C52vWy01a1K9o9TKiy1G0Q56lsvD4QnCkWs6g1FKQoWVucMVeqiF_EMzj00TMqPT2iXo4hu5nJeHNwKhE8fScQg3A64mSdRu5X7WgdB8DEBn_oFKHrmB5q83h1Pw5fcd96_M7Wg
 
-https://localhost:8080/login-result#access_token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ5NVJqMVUwdUd0NFJvcjI1VGtpRiJ9.eyJpc3MiOiJodHRwczovL3N5d29uZzEwY2hvcnVzLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2MmRjNmQ3ZTM1Yzk5ZGM4YjhjNjczMDIiLCJhdWQiOiJjaG9ydXMiLCJpYXQiOjE2NjExODg1MTAsImV4cCI6MTY2MTI3NDkxMCwiYXpwIjoidGFVZXFWNXk3RWdoN2c2S2Y5UDU3ajJ6VERwTHVjbVUiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpzaW5nZXJzIiwiZ2V0OmNob2lycyIsImdldDplbnJvbGxtZW50cyIsImdldDpzaW5nZXJzIiwicGF0Y2g6c2luZ2VycyIsInBvc3Q6c2luZ2VycyJdfQ.Z4t_RA0u_R9nMzhf6SqG__MgPceIZrY9tnN6asVshdpQLc9cOTAJFT9dirO_t9dschDlRP6Y51gIUqsD1ux7gma1tuBZzLHwVCL96t8k1rImUmbuIo3VbayHKCW0oD9Cr1Ek82Ess88Up3FGQLtEq6Hd3EA-dtfErslI_tTN2yKN_QFqYyQOykBkzz1BXl_kVMobuxuuGUWlvpxA65LO8ug9DSRX86ojE_Peg1qRWLhpUKK20hNgvn9L9XqJ5v8vILhqzjQxSZBpejIM-w4tGEnx3GqpCDBGWfC7-bM_ROnllzUMOYV0ookapTC6bYA9-yTmvdgPgQeYYIS2pdN0mw&expires_in=86400&token_type=Bearer
+https://localhost:8080/login-result#access_token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ5NVJqMVUwdUd0NFJvcjI1VGtpRiJ9.eyJpc3MiOiJodHRwczovL3N5d29uZzEwY2hvcnVzLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2MmRjNmQ3ZTM1Yzk5ZGM4YjhjNjczMDIiLCJhdWQiOiJjaG9ydXMiLCJpYXQiOjE2NjIyMTQwOTIsImV4cCI6MTY2MjMwMDQ5MiwiYXpwIjoidGFVZXFWNXk3RWdoN2c2S2Y5UDU3ajJ6VERwTHVjbVUiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpzaW5nZXJzIiwiZ2V0OmNob2lycyIsImdldDplbnJvbGxtZW50cyIsImdldDpzaW5nZXJzIiwicGF0Y2g6c2luZ2VycyIsInBvc3Q6c2luZ2VycyJdfQ.N5TRjX7hhYIp18sLpynlRVVKnoxadMkN0Z2ebkSPaeDSy2P1iBtmC7sBgV8Mopwtj7UKlRt78HVfqEYas3-CrHi-C5bCRiEGfKhC6RlIhjlhLlX-eZ4CtcdVnnhtuGfUs73fKf2aIn_6RHJqbv1_8flc0krs7e_6HcjjIbNt8-DWj6FxSyoeWJSZNxMEml81NdKzKz5AGfmCgFj4JR6zk__h1TcHwmCm8ruAM92mU3AHhuKGfejcztMTNofC2Tw-SrSnIzt0-sJ5yxsxKLWjxRMlO4g-hpCQd--OzGcuar-we8wInq4fDMPNHxI-r2GnNqToOt25P4FssPfsvzS80g&expires_in=86400&token_type=Bearer
 
